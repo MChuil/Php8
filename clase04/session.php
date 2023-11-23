@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    session_start();   
     /**
      * Manejo de sesiones------ $_SESSION['variable']
      * Las sesiones estan disponible solo mientras el navegador no se cierre o no se hayan
