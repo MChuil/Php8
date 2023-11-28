@@ -1,0 +1,7 @@
+Manejo de ficheros con PHP 8
+Esta es la segunda linea de texto
+Esta es la tercera linea de texto
+Esta es la cuarta linea de texto
+Esta es la quinta linea de texto
+Favor de entregar todos sus trabajos pendientes los que aun no han entregado
+Si no tienen equipo, pueden hacerlo desde su movil en una pagina online
