@@ -7,7 +7,7 @@
      */
 
     //Conexion
-    //          new mysqli(    host,    usuario, contraseña, base de datos)
+    // new mysqli(    host,    usuario, contraseña, base de datos)
     
     try {
         $conexion = new mysqli('localhost', 'root', 'root', 'helpdesk');
@@ -15,3 +15,11 @@
     } catch (\Throwable $th) {
         echo "Error de conexión a la base de datos, " . $th->getMessage();
     }
+
+    /**
+     * 
+     * C reate
+     * R ead
+     * U pdate
+     * D elete
+     */
