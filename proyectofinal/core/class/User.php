@@ -15,13 +15,13 @@
         public function selectAll(){
             $sql = "SELECT * FROM users";
             $query = $this->conexion->query($sql);
-            return $query->fetch_all();
+            return $query->fetch_all(MYSQLI_ASSOC);
         }
 
         public function selectById($id){
-            $sql = "SELECT * FROM users WHERE id = $id";
+            $sql = "SELECT * FROM users WHERE id = $id LIMIT 1";
             $query = $this->conexion->query($sql);
-            return $query->fetch_all();
+            return $query->fetch_all(MYSQLI_ASSOC);
         }
 
         // -------------------- CREATE ----------------------
