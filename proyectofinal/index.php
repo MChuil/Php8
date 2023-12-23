@@ -1,3 +1,4 @@
+<?php require_once 'validateauth.php' ?>
 <?php require_once "template/header.php"; ?>
 <?php require_once "template/sidebar.php"; ?>
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">

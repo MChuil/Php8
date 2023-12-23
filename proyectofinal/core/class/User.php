@@ -34,7 +34,7 @@
 
         // -------------------- UPDATE -----------------------
         public function update($id, $data){
-            $sql = "UPDATE users SET name=\"{$data['name']}\", email=\"{$data['email']}\", password=\"{$data['password']}\", rol = \"{$data['rol']}\", updated_at = \"{$data['update']}\" WHERE id = $id";
+            $sql = "UPDATE users SET name=\"{$data['name']}\", email=\"{$data['email']}\", rol = \"{$data['rol']}\", updated_at = \"{$data['update']}\" WHERE id = $id";
             $response = $this->conexion->query($sql);
             return $response;
         }
@@ -44,6 +44,12 @@
             $sql = "DELETE FROM users WHERE id = $id";
             $response = $this->conexion->query($sql);
             return $response;
+        }
+
+        public function searchEmail($email){
+            $sql = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
+            $query = $this->conexion->query($sql);
+            return $query->fetch_all(MYSQLI_ASSOC);
         }
     }
 

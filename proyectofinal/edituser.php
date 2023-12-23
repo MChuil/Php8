@@ -1,3 +1,4 @@
+<?php require_once 'validateauth.php' ?>
 <?php 
     require_once "core/class/User.php";
     $id = $_GET['id'];
@@ -18,7 +19,8 @@
                             <h2>Editar Usuario</h2>
                         </div>
                         <div class="card-body">
-                            <form action="storeuser.php" method="post">
+                            <form action="updateuser.php" method="post">
+                                <input type="hidden" name="id" value="<?= $id ?>">
                                 <div class="form-group">
                                     <label for="name">Nombre</label>
                                     <input type="text" name="name" class="form-control" placeholder="Ingrese su nombre completo" value="<?= $data['name'] ?>">

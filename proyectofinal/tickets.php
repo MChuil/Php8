@@ -1,8 +1,8 @@
 <?php require_once 'validateauth.php' ?>
 <?php
-    require_once "core/class/User.php";
-    $user = new User;
-    $users = $user->selectAll();
+    require_once "core/class/Ticket.php";
+    $ticket = new Ticket;
+    $tickets = $ticket->selectAll();
 ?>
 <?php require_once "template/header.php"; ?>
 <?php require_once "template/sidebar.php"; ?>
@@ -14,7 +14,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header bg-info text-white">
-                            <h2>Listado de Usuarios</h2>
+                            <h2>Mis Tickets</h2>
                         </div>
                         <div class="card-body">
                             <?php if (!empty($_SESSION['success'])) : ?>
@@ -29,26 +29,29 @@
                                     <?php unset($_SESSION['error']); ?>
                                 </div>
                             <?php endif; ?>
-                            <a href="createuser.php" class="btn btn-primary btn-sm mb-4">Nuevo usuario</a>
+                            <a href="createticket.php" class="btn btn-primary btn-sm mb-4">Nuevo ticket</a>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Nombre</th>
-                                        <th>Correo</th>
-                                        <th>Rol</th>
-                                        <th colspan="2"></th>
+                                        <th>Titulo</th>
+                                        <th>Estado</th>
+                                        <th>Fecha</th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($users as $row) { ?>
+                                    <?php foreach ($tickets as $row) { ?>
                                         <tr>
                                             <td><?= $row["id"] ?></td>
-                                            <td><?= $row["name"] ?></td>
-                                            <td><?= $row["email"] ?></td>
-                                            <td><?= $row["rol"] ?></td>
+                                            <td><?= $row["title"] ?></td>
+                                            <td><?= $row["status"] ?></td>
+                                            <td><?= $row["created_at"] ?></td>
                                             <td>
-                                                <a href="edituser.php?id=<?= $row["id"] ?>" class="btn btn-info btn-sm text-white"><i class="icon icon-2xl cil-pencil"></i></a>
+                                                <a href="" class="btn btn-success btn-sm text-white">
+                                                    <i class="icon icon-2xl cil-indent-increase"></i>
+                                                </a>
                                             </td>
                                             <td>
                                                 <form action="destroyuser.php" method="post">
