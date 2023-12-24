@@ -12,9 +12,11 @@
                 <svg class="nav-icon">
                     <use xlink:href="<?= RESOURCES ?>/vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
                 </svg> Tablero</a></li>
+        <?php if($_SESSION['userrol'] == "Administrador"): ?>
         <li class="nav-title">ADMINISTRADOR</li>
         <li class="nav-item"><a class="nav-link" href="users.php">
             <i class="icon icon-2xl mt-5 mb-2 cil-user"></i>Usuarios</a></li>
+        <?php endif; ?>
         <li class="nav-title">AYUDA</li>
         <li class="nav-item"><a class="nav-link" href="tickets.php">
             Mis Tickets</a></li>

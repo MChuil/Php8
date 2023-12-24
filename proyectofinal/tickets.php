@@ -2,7 +2,7 @@
 <?php
     require_once "core/class/Ticket.php";
     $ticket = new Ticket;
-    $tickets = $ticket->selectAll();
+    $tickets = $ticket->myTickets($_SESSION['userid']);
 ?>
 <?php require_once "template/header.php"; ?>
 <?php require_once "template/sidebar.php"; ?>
@@ -49,15 +49,17 @@
                                             <td><?= $row["status"] ?></td>
                                             <td><?= $row["created_at"] ?></td>
                                             <td>
-                                                <a href="" class="btn btn-success btn-sm text-white">
+                                                <a href="detailsticket.php?id=<?= $row["id"] ?>" class="btn btn-success btn-sm text-white">
                                                     <i class="icon icon-2xl cil-indent-increase"></i>
                                                 </a>
                                             </td>
                                             <td>
-                                                <form action="destroyuser.php" method="post">
-                                                    <input type="hidden" name="id" value="<?= $row["id"] ?>">
-                                                    <button type="submit" class="btn btn-danger btn-sm text-white"><i class="icon icon-2xl cil-trash"></i></button>
-                                                </form>
+                                                <?php if($_SESSION['userrol'] == "Administrador"): ?>
+                                                    <form action="destroyuser.php" method="post">
+                                                        <input type="hidden" name="id" value="<?= $row["id"] ?>">
+                                                        <button type="submit" class="btn btn-danger btn-sm text-white"><i class="icon icon-2xl cil-trash"></i></button>
+                                                    </form>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php } ?>

@@ -1,4 +1,4 @@
-<?php require_once 'validateauth.php' ?>
+<?php require_once 'validateadmin.php' ?>
 <?php
     require_once "core/class/User.php";
     $user = new User;

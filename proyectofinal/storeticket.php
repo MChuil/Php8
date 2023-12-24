@@ -5,6 +5,8 @@
         return;
     }
     require_once "core/class/Ticket.php";
+    require_once "core/class/TicketDetail.php";
+
     // Validación
         $_SESSION['data'] = $_POST;
         if(empty($_POST['area'])){
@@ -30,10 +32,25 @@
         "user_id" => $_SESSION['userid'],
     ];
     $ticket = new Ticket;
-    if($ticket->create($data)){
-        $_SESSION['success'] = "Ticket creado. A la brevedad daremos atención a su solicitud";
-        unset($_SESSION['data']);
-        header("Location: tickets.php");
+    $ticket_id = $ticket->create($data);
+    if($ticket_id){
+        // insertar en la tabla TicketDetails
+        $data = [
+            'message' =>$_POST['message'],
+            'date_message' => $date,
+            'ticket_id' => $ticket_id
+        ];
+
+        $details = new TicketDetail;
+        if($details->create($data)){
+            $_SESSION['success'] = "Ticket creado. A la brevedad daremos atención a su solicitud";
+            unset($_SESSION['data']);
+            header("Location: tickets.php");
+        }else{
+            // 1. eliminar el ticket general
+            // 2. Mensaje
+            // 3. Redirección
+        }
     }else{
         $_SESSION['error'] = "Error, intente nuevamente y si persiste, comuniquese con el WebMaster";
         header("Location: createticket.php");

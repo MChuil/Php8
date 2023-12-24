@@ -1,11 +1,12 @@
 <?php 
+    $miRuta = $_SERVER['DOCUMENT_ROOT'] . "/php8/proyectofinal/";
     session_start();
     if (!empty($_SESSION['logged'])) {
         header('Location: index.php');
         return;
     }
 ?>
-<?php require_once "template/header.php"; ?>
+<?php require_once($miRuta . "template/header.php"); ?>
 
 <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
     <div class="container">
